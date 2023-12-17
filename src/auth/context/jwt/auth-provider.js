@@ -6,7 +6,7 @@ import { useMemo, useEffect, useReducer, useCallback } from 'react';
 import axios, { endpoints } from 'src/utils/axios';
 
 import { AuthContext } from './auth-context';
-import { setSession, isValidToken } from './utils';
+import { setSession, isValidToken, setUserSession } from './utils';
 
 // ----------------------------------------------------------------------
 /**
@@ -109,9 +109,8 @@ export function AuthProvider({ children }) {
     const response = await axios.post(endpoints.auth.testLogin, data);
 
     const { jwt, user } = response.data;
-    
     setSession(jwt);
-
+    setUserSession(user);
     dispatch({
       type: 'LOGIN',
       payload: {

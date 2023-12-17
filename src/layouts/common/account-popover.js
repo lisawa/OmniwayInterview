@@ -13,6 +13,8 @@ import { useRouter } from 'src/routes/hooks';
 
 import { useMockedUser } from 'src/hooks/use-mocked-user';
 
+import { getUserSession } from './utils';
+
 import { useAuthContext } from 'src/auth/hooks';
 
 import { varHover } from 'src/components/animate';
@@ -40,7 +42,7 @@ const OPTIONS = [
 export default function AccountPopover() {
   const router = useRouter();
 
-  const { user } = useMockedUser();
+  const { user } = getUserSession();
 
   const { logout } = useAuthContext();
 
@@ -80,7 +82,7 @@ export default function AccountPopover() {
         }}
       >
         <Avatar
-          src={user?.photoURL}
+          src={user?.photoURL?.small?.url}
           alt={user?.displayName}
           sx={{
             width: 36,
