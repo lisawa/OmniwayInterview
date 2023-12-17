@@ -82,7 +82,7 @@ export default function AccountPopover() {
         }}
       >
         <Avatar
-          src={user?.photoURL?.small?.url}
+          src={`https://interview.m-inno.com${user?.photoURL?.url}`}
           alt={user?.displayName}
           sx={{
             width: 36,
